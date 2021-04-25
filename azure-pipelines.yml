@@ -20,7 +20,14 @@ stages:
       name: tfvardef
       displayName: Download terraform.tfvars
       inputs:
-        secureFile: 'terraform.tfvars' 
+        secureFile: 'terraform.tfvars'
+
+    # Needed for Terraform VM deployment
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: 'known_hosts'
+        sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtFwcawuv34LrXSDY/YAw0rLAd2sfJkmQngRQGBtyChoLPtapJzcqwfktO4zr4bHOGL3kLc8Eoo/j00z2LCaVjNjTk675Ag+Vt0327jhiBaFSIk9fG/YEs0aENQUKKHJEBpAxU/ovPjLUssfUUKGB9qZ/UO2tkYf9v4kt3IgqGnxDzVA05YQR1F/MfUAPzJWYV5c/p0rIs4ZhF3JXAS4anut8VHOCov/Xk8dx3k/fN9UKuUqQnvCutoT4bYIkB9gqeQSk//aBheaXDHQaRF5pfArq66vV92DCBrEMmXT+lfHb2wS++aG3FDEE/36aUCDFjuV6HV54nUbDJexb2o6L7 ns142e@NJMACL01NS142E'
+        sshKeySecureFile: 'udacity_azure'
 
     # Needed for Terraform VM deployment
     - bash: |
@@ -30,6 +37,14 @@ stages:
     - bash: |
         echo Pipeline workspace dir is $(Pipeline.Workspace)
         echo Terraform variable definition file is $(tfvardef.secureFilePath)
+        cd $(Agent.TempDirectory)
+        pwd
+        ls -la
+        cat udacity_azure.pub
+        cd ~/.ssh/
+        pwd
+        ls -la
+        cat known_hosts
         # $(System.DefaultWorkingDirectory) is equivalent to $(Build.SourcesDirectory)
         cd $(System.DefaultWorkingDirectory)  
         pwd
