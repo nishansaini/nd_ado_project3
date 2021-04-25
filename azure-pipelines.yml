@@ -23,11 +23,6 @@ stages:
         secureFile: 'terraform.tfvars' 
 
     # Needed for Terraform VM deployment
-    - task: InstallSSHKey@0
-      inputs:
-        knownHostsEntry: 'known_hosts'
-        sshKeySecureFile: 'udacity_azure'
-
     - bash: |
         cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform/environments/test
       displayName: Copy terraform.tfvars
@@ -35,14 +30,6 @@ stages:
     - bash: |
         echo Pipeline workspace dir is $(Pipeline.Workspace)
         echo Terraform variable definition file is $(tfvardef.secureFilePath)
-        cd $(Agent.TempDirectory)
-        pwd
-        ls -la
-        cat udacity_azure.pub
-        cd ~/.ssh/
-        pwd
-        ls -la
-        cat known_hosts
         # $(System.DefaultWorkingDirectory) is equivalent to $(Build.SourcesDirectory)
         cd $(System.DefaultWorkingDirectory)  
         pwd
