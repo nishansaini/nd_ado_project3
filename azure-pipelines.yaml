@@ -60,7 +60,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        backendServiceArm: 'azurerm-sc'
+        backendServiceArm: 'QualityRelease-ND-SC'
         backendAzureRmResourceGroupName: 'tstate'
         backendAzureRmStorageAccountName: 'tstate12785'
         backendAzureRmContainerName: 'tstate'
@@ -75,7 +75,7 @@ stages:
         commandOptions: |
           -auto-approve 
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        environmentServiceNameAzureRM: 'azurerm-sc'
+        environmentServiceNameAzureRM: 'QualityRelease-ND-SC'
 
 - stage: Build
   jobs:
@@ -128,7 +128,7 @@ stages:
           - task: AzureWebApp@1
             displayName: Deploy Azure WebApp
             inputs:
-              azureSubscription: 'azurerm-sc'
+              azureSubscription: 'QualityRelease-ND-SC'
               appName: 'lingchenzhu-webapi-AppService'
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip
@@ -340,7 +340,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        backendServiceArm: 'azurerm-sc'
+        backendServiceArm: 'QualityRelease-ND-SC'
         backendAzureRmResourceGroupName: 'tstate'
         backendAzureRmStorageAccountName: 'tstate12785'
         backendAzureRmContainerName: 'tstate'
@@ -355,4 +355,4 @@ stages:
         commandOptions: |
           -auto-approve 
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
-        environmentServiceNameAzureRM: 'azurerm-sc'
+        environmentServiceNameAzureRM: 'environmentServiceNameAzureRM'
