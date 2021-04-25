@@ -23,11 +23,11 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        backendServiceArm: 'Azure subscription 1(1)(3f968a33-f62f-4ca7-a1f1-961635306fc2)'
+        backendServiceArm: 'QualityRelease-ND-SC'
         backendAzureRmResourceGroupName: 'tstate'
         backendAzureRmStorageAccountName: 'tstate23125'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
-        workingDirectory: 'terraform'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
 
 
