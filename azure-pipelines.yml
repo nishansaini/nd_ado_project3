@@ -142,7 +142,7 @@ stages:
   - job: publishSelenium
     displayName: 'Publish Selenium'
     steps:
-    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/selenium-tests.py
+    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
       artifact: seleniumFile
   - deployment: seleniumOnVMDeploy
     displayName: 'Install and run Selenium on VM'
