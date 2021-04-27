@@ -24,7 +24,7 @@ def login (user, password):
     driver.find_element_by_id("login-button").click()
 
     # Check if login successful
-    product_label = driver.find_element_by_css_selector("div[class='inventory_container']").text
+    product_label = driver.find_element_by_css_selector("div[class='title']").text
     assert "Products" in product_label
     print(date() + " User " + user + " logged in successfully!")
 
