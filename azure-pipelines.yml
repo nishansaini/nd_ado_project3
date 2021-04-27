@@ -128,12 +128,7 @@ stages:
       displayName: EnduranceTest
       inputs:
         targetType: 'inline'
-        script: 'jmeter -n -t automatedtesting/jmeter/EnduranceTestSuite.jmx -Jresdir=automatedtesting/jmeter/endurancepages.csv -l automatedtesting/jmeter/report/enduranceresults.jtl -e -o automatedtesting/jmeter/endurancereport'
-    - task: Bash@3
-      displayName: StressTest
-      inputs:
-        targetType: 'inline'
-        script: 'jmeter -n -t automatedtesting/jmeter/StressTestSuite.jmx -Jresdir=automatedtesting/jmeter/stresspages.csv -l automatedtesting/jmeter/report/stressresults.jtl -e -o automatedtesting/jmeter/stressreport'
+        script: 'jmeter -n -t automatedtesting/jmeter/Starter.jmx -l automatedtesting/jmeter/report/enduranceresults.jtl -e -o automatedtesting/jmeter/endurancereport'
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: 'automatedtesting/jmeter'
