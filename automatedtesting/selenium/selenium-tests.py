@@ -13,7 +13,9 @@ cart_url = 'https://www.saucedemo.com/cart.html'
 def create_driver():
     print ('Starting the browser...')
     options = ChromeOptions()
-    options.add_argument("--headless") 
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu");
     return webdriver.Chrome(options=options)
     
 
